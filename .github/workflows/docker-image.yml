@@ -27,6 +27,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Tag Docker Image
-      run: docker tag docker.io/webserver:v0.1 ${{ secrets.DOCKER_USERNAME }}/samplewebserver:v0.${{ github.run_number }}
+      run: docker tag webserver:v0.1 ${{ secrets.DOCKER_USERNAME }}/samplewebserver:v0.${{ github.run_number }}
     - name: Push image to Docker Hub
       run: docker push ${{ secrets.DOCKER_USERNAME }}/samplewebserver:v0.${{ github.run_number }}
