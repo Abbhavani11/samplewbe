@@ -21,7 +21,12 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Tag Docker Image
+    - name: Tag Docker Image with Version
       run: docker tag webserver:v0.1 ${{ secrets.DOCKER_USERNAME }}/samplewebserver:v0.${{ github.run_number }}
-    - name: Push image to Docker Hub
+    - name: Tag Docker Image with Latest as Version
+      run: docker tag webserver:v0.1 ${{ secrets.DOCKER_USERNAME }}/samplewebserver:latest
+    - name: Push version image to Docker Hub
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/samplewebserver:latest
+    - name: Push latest version image to Docker Hub
       run: docker push ${{ secrets.DOCKER_USERNAME }}/samplewebserver:v0.${{ github.run_number }}
+  
