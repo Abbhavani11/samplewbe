@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  samplewebserver:
+    image: abbhavani11/samplewebserver:v0.13
+    ports:
+      - "8080:80"
+    restart: always
