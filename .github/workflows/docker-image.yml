@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag abbhavani11/samplewebserver:v0.${{ github.run_number }}
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/samplewebserver:v0.${{ github.run_number }}
 
   docker_login:
     runs-on: ubuntu-latest
@@ -28,4 +28,4 @@ jobs:
     needs: [build, docker_login]
     steps:
     - name: Push image to Docker Hub
-      run: docker push abbhavani11/samplewebserver:v0.${{ github.run_number }}
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/samplewebserver:v0.${{ github.run_number }}
