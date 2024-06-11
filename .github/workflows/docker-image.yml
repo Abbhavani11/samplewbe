@@ -16,7 +16,7 @@ jobs:
       run: |
         docker build . --file Dockerfile --tag webserver:v0.1
         docker images  # Print the list of Docker images for debugging
-    - name: Log in to Docker Hub
+    - name: Log in to Docker Hub using username
       uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
